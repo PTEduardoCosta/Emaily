@@ -1,0 +1,14 @@
+import React from 'react';
+
+const Landing = () => {
+    return(
+        <div style={{ textAlign: 'center' }}>
+            <h1>
+                Eamily!
+            </h1>
+        Collect feedback ffrom your users
+        </div>
+    );
+};
+
+export default Landing;
