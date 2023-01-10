@@ -4,7 +4,9 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -23,12 +25,9 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
-console.log(process.env.NODE_ENV);
-console.log(keys.mongoURI);
-console.log(keys.googleClientID);
-
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
     //Express will serve up production assets
     //like main.js
     app.use(express.static('client/build'));
